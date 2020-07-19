@@ -1,0 +1,95 @@
+Мать Asrock A785GM-LE/128M Socket AM2/3
+Процессор AMD Phenom X3 8400 2.1 GHz/3core
+Память Corsair DDR2 4Gb (2x2Gb) 800MHz pc-6400
+
+
+
+
+
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
+
+namespace ImageFlip
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            //var path = Path.GetDirectoryName(location);
+            //Console.WriteLine(path);
+            string dirName = "C:\\Users\\Алексей\\source\\repos\\ImageFlip\\testPics";
+
+            //добавить трай на проверку наличия файлов в папке(ошибку если пустая)
+
+
+
+
+            if (Directory.Exists(dirName))
+            {
+                Console.WriteLine("Файлы:");
+                string[] files = Directory.GetFiles(dirName);
+                foreach (string s in files)
+                {
+                    /*
+                    Stopwatch stopWatch = new Stopwatch();
+                    stopWatch.Start();
+                    */
+                    DateTime a = DateTime.Now;
+                    Console.WriteLine(s);
+                    Console.WriteLine(DateTime.Now - a);
+                    /*
+                    stopWatch.Stop();
+                    TimeSpan ts = stopWatch.Elapsed;
+                    string elapsedTime = String.Format("{0:00}:{1:00}.{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds);
+                    Console.WriteLine("Время выполнения операции: " + elapsedTime);
+                    */
+                }
+            }
+
+        }
+    }
+}
+
+
+https://docs.microsoft.com/ru-ru/dotnet/standard/parallel-programming/how-to-write-a-simple-parallel-foreach-loop
+
+
+
+
+
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
+
+namespace ImageFlip
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string dirName = "C:\\Users\\Алексей\\source\\repos\\ImageFlip\\testPics";
+
+            //добавить трай на проверку наличия файлов в папке(ошибку если пустая)
+            int coreCount = Environment.ProcessorCount;
+
+
+            if (Directory.Exists(dirName))
+            {
+                Console.WriteLine("Файлы:");
+                string[] files = Directory.GetFiles(dirName);
+                foreach (string s in files)
+                {
+                    DateTime a = DateTime.Now;
+                    Console.WriteLine(s);
+                    Console.WriteLine(DateTime.Now - a);
+                }
+            }
+
+        }
+    }
+}
+
